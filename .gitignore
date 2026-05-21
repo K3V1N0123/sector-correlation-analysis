@@ -1,0 +1,10 @@
+venv/
+__pycache__/
+.ipynb_checkpoints/
+data/raw/
+data/processed/
+outputs/figures/
+outputs/tables/
+*.pyc
+.DS_Store
+SECTOR_CORRELATION_AGENT.md

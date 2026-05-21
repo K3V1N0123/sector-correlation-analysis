@@ -1,0 +1,1 @@
+"""Structural break analysis module."""

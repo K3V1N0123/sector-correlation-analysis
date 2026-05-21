@@ -1,0 +1,90 @@
+project:
+  name: "NSE Sector Correlation Analysis"
+  version: "1.0.0"
+  random_seed: 42
+
+data:
+  start_date: "2015-01-01"
+  end_date: "2024-12-31"
+  frequency: "daily"
+  cache_path: "data/raw/nifty_sectors_raw.csv"
+
+sectors:
+  - name: "Nifty Bank"
+    ticker: "^NSEBANK"
+    label: "BANK"
+  - name: "Nifty IT"
+    ticker: "^CNXIT"
+    label: "IT"
+  - name: "Nifty FMCG"
+    ticker: "^CNXFMCG"
+    label: "FMCG"
+  - name: "Nifty Auto"
+    ticker: "^CNXAUTO"
+    label: "AUTO"
+  - name: "Nifty Pharma"
+    ticker: "^CNXPHARMA"
+    label: "PHARMA"
+  - name: "Nifty Financial Services"
+    ticker: "^CNXFINANCE"
+    label: "FIN_SVC"
+    alternate_tickers:
+      - "NIFTY_FIN_SERVICE.NS"
+  - name: "Nifty Metal"
+    ticker: "^CNXMETAL"
+    label: "METAL"
+  - name: "Nifty Energy"
+    ticker: "^CNXENERGY"
+    label: "ENERGY"
+  - name: "Nifty Realty"
+    ticker: "^CNXREALTY"
+    label: "REALTY"
+  - name: "Nifty Infrastructure"
+    ticker: "^CNXINFRA"
+    label: "INFRA"
+  - name: "Nifty Media"
+    ticker: "^CNXMEDIA"
+    label: "MEDIA"
+  - name: "Nifty PSU Bank"
+    ticker: "^CNXPSUBANK"
+    label: "PSU_BANK"
+  - name: "Nifty Private Bank"
+    ticker: "^NIFPVTBNK"
+    label: "PVT_BANK"
+    alternate_tickers:
+      - "NIFTY_PVT_BANK.NS"
+
+analysis:
+  rolling_window: 252
+  rolling_step: 1
+  adf_significance: 0.01
+  correlation_method: "pearson"
+  winsorize_limits: [0.01, 0.99]
+  min_subperiod_days: 50
+
+sub_periods:
+  pre_covid:
+    start: "2015-01-01"
+    end: "2019-12-31"
+    label: "Pre-COVID"
+  covid_shock:
+    start: "2020-01-01"
+    end: "2020-06-30"
+    label: "COVID Shock"
+  post_covid:
+    start: "2020-07-01"
+    end: "2024-12-31"
+    label: "Post-COVID"
+
+clustering:
+  linkage: "ward"
+  distance_metric: "correlation"
+
+pca:
+  variance_threshold: 0.80
+
+outputs:
+  figures_path: "outputs/figures"
+  tables_path: "outputs/tables"
+  report_path: "outputs/report"
+  dpi: 300
