@@ -8,3 +8,5 @@ outputs/tables/
 *.pyc
 .DS_Store
 SECTOR_CORRELATION_AGENT.md
+ppt_presentation.md
+notebooks/sample.ipynb

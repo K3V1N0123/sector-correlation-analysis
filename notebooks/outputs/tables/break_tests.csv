@@ -1,0 +1,4 @@
+period_a,period_b,statistic,df,pvalue,reject_h0
+pre_covid,covid_shock,509.6661170917618,78,1.3073463936490525e-64,True
+covid_shock,post_covid,282.5563246874909,78,5.788496065934759e-25,True
+pre_covid,post_covid,400.4937695759208,78,7.338949018018541e-45,True
